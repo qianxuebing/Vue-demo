@@ -24,9 +24,11 @@
           </div>
       </div>
       <div class="index-right">
+
+        
         <div class="index-board-list">
           <div class="index-board-item" v-for="(item,index) in boardList" 
-          :class="[{'line-last':index%2!==0},'index-board'+item.id]">
+          :class="[{'line-last':index%2!==0},'index-board-'+item.id]">
             <div class="index-board-item-inner">
               <h2>{{item.title}}</h2>
               <p>{{item.description}}</p>
@@ -208,6 +210,18 @@ export default {
       }
     }
   }
+}
+.index-board-car .index-board-item-inner {
+  background: url(../assets/images/1.png) no-repeat;
+}
+.index-board-loud .index-board-item-inner {
+  background: url(../assets/images/2.png) no-repeat;
+}
+.index-board-earth .index-board-item-inner {
+  background: url(../assets/images/3.png) no-repeat;
+}
+.index-board-hill .index-board-item-inner {
+  background: url(../assets/images/4.png) no-repeat;
 }
 </style>
 
