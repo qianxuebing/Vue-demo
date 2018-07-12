@@ -139,6 +139,9 @@ export default {
       margin: 15px;
       background-color: #fff;
       box-shadow: 0 0 1px #ddd;
+      &.lastest-news {
+        min-height: 512px;
+      }
       h2 {
         padding: 10px 15px;
         background: #4fc08d;
@@ -154,6 +157,17 @@ export default {
         padding: 10px 15px;
         li {
           padding: 5px;
+          .hot-tag {
+            background: red;
+            color: #fff;
+          }
+          .new-item {
+            display: inline-block;
+            width: 230px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
         }
       }
       .hr {
@@ -163,16 +177,34 @@ export default {
   }
   .index-right {
     flex: 1;
+    .line-last {
+      margin-right: 0 !important;
+    }
     .index-board-list {
       overflow: hidden;
       display: flex;
       display: -webkit-flex;
+      flex-wrap: wrap;
       .index-board-item {
         width: 400px;
         background-color: #fff;
         box-shadow: 0 0 1px #ddd;
         padding: 20px;
         margin-right: 20px;
+        margin-bottom: 20px;
+        .index-board-item-inner {
+          padding-left: 120px;
+          min-height: 125px;
+          .index-board-button {
+            margin-top: 20px;
+          }
+        }
+        h2 {
+          font-size: 18px;
+          color: #000;
+          font-weight: bold;
+          margin-bottom: 15px;
+        }
       }
     }
   }
