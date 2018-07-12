@@ -15,7 +15,9 @@
     </div>
     
   </div>
-  <div class="app-content">content</div>
+  <div class="app-content">
+      <index-page></index-page>
+  </div>
   <div class="app-footer">
     <p>© 2016 fishenal MIT</p>
   </div>
@@ -24,11 +26,16 @@
 </template>
 
 <script>
+import IndexPage from "@/Pages/IndexPage";
+
 export default {
   data() {
     return {
       msg: "Welcome to Your Vue.js App"
     };
+  },
+  components: {
+    IndexPage
   }
 };
 </script>
@@ -201,8 +208,7 @@ body {
   }
 }
 
-
-.app-footer{
+.app-footer {
   text-align: center;
   height: 80px;
   line-height: 80px;
