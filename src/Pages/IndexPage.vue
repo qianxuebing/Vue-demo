@@ -6,7 +6,7 @@
             <template v-for="product in productList">
               <h3>{{product.title}}</h3>
               <ul>
-                <li v-for="item in product.list">
+                <li v-for="(item,index) in product.list" :key="index">
                   <a :href="item.url">{{item.name}}</a>
                   <span v-if="item.hot" class="hot-tag">HOT</span>
                 </li>
@@ -17,14 +17,14 @@
           <div class="index-left-block lastest-news">
             <h2>最新消息</h2>
             <ul>
-              <li v-for="item in newsList">
+              <li v-for="(item,index) in newsList" :key="index">
                 <a :href="item.url" class="new-item">{{item.title}}</a>
               </li>
             </ul>
           </div>
       </div>
       <div class="index-right">
-        <slide-show :slides="slides"></slide-show>
+        <slide-show :slides="slides" :inv="invTime"></slide-show>
         <div class="index-board-list">
           <div class="index-board-item" v-for="(item,index) in boardList" 
           :class="[{'line-last':index%2!==0},'index-board-'+item.id]">
@@ -43,115 +43,123 @@
 <script>
 import SlideShow from "../components/SlideShow";
 export default {
-  data() {
+  components: {
+    SlideShow
+  },
+  // created: function () {
+  //   this.$http.get('api/getNewsList')
+  //   .then((res) => {
+  //     this.newsList = res.data
+  //   }, (err) => {
+  //     console.log(err)
+  //   })
+  // },
+  data () {
     return {
       invTime: 2000,
+      slides: [
+        {
+          src: require('../assets/slideShow/pic1.jpg'),
+          title: 'xxx1',
+          href: 'detail/analysis'
+        },
+        {
+          src: require('../assets/slideShow/pic2.jpg'),
+          title: 'xxx2',
+          href: 'detail/count'
+        },
+        {
+          src: require('../assets/slideShow/pic3.jpg'),
+          title: 'xxx3',
+          href: 'http://xxx.xxx.com'
+        },
+        {
+          src: require('../assets/slideShow/pic4.jpg'),
+          title: 'xxx4',
+          href: 'detail/forecast'
+        }
+      ],
+      boardList: [
+        {
+          title: '开放产品',
+          description: '开放产品是一款开放产品',
+          id: 'car',
+          toKey: 'analysis',
+          saleout: false
+        },
+        {
+          title: '品牌营销',
+          description: '品牌营销帮助你的产品更好地找到定位',
+          id: 'earth',
+          toKey: 'count',
+          saleout: false
+        },
+        {
+          title: '使命必达',
+          description: '使命必达快速迭代永远保持最前端的速度',
+          id: 'loud',
+          toKey: 'forecast',
+          saleout: true
+        },
+        {
+          title: '勇攀高峰',
+          description: '帮你勇闯高峰，到达事业的顶峰',
+          id: 'hill',
+          toKey: 'publish',
+          saleout: false
+        }
+      ],
       newsList: [],
       productList: {
         pc: {
-          title: "PC产品",
+          title: 'PC产品',
           list: [
             {
-              name: "数据统计",
-              url: "http://starcraft.com"
+              name: '数据统计',
+              url: 'http://starcraft.com'
             },
             {
-              name: "数据预测",
-              url: "http://warcraft.com"
+              name: '数据预测',
+              url: 'http://warcraft.com'
             },
             {
-              name: "流量分析",
-              url: "http://overwatch.com",
+              name: '流量分析',
+              url: 'http://overwatch.com',
               hot: true
             },
             {
-              name: "广告发布",
-              url: "http://hearstone.com"
+              name: '广告发布',
+              url: 'http://hearstone.com'
             }
           ]
         },
         app: {
-          title: "手机应用类",
+          title: '手机应用类',
           last: true,
           list: [
             {
-              name: "91助手",
-              url: "http://weixin.com"
+              name: '91助手',
+              url: 'http://weixin.com'
             },
             {
-              name: "产品助手",
-              url: "http://twitter.com",
+              name: '产品助手',
+              url: 'http://twitter.com',
               hot: true
             },
             {
-              name: "智能地图",
-              url: "http://maps.com"
+              name: '智能地图',
+              url: 'http://maps.com'
             },
             {
-              name: "团队语音",
-              url: "http://phone.com"
+              name: '团队语音',
+              url: 'http://phone.com'
             }
           ]
         }
-      },
-      boardList: [
-        {
-          title: "开放产品",
-          description: "开放产品是一款开放产品",
-          id: "car",
-          toKey: "analysis",
-          saleout: false
-        },
-        {
-          title: "品牌营销",
-          description: "品牌营销帮助你的产品找到更好的定位",
-          id: "earth",
-          toKey: "count",
-          saleout: false
-        },
-        {
-          title: "使命必达",
-          description: "使命必达快速迭代永远保持最前端的速度",
-          id: "loud",
-          toKey: "forecast",
-          saleout: true
-        },
-        {
-          title: "勇攀高峰",
-          description: "帮你勇闯高峰，到达事业顶峰",
-          id: "hill",
-          toKey: "publish",
-          saleout: false
-        }
-      ],
-      slides: [
-        {
-          scr: require("../assets/slideShow/pic1.jpg"),
-          title: "xxx1",
-          href: "detail/analysis"
-        },
-        {
-          scr: require("../assets/slideShow/pic2.jpg"),
-          title: "xxx2",
-          href: "detail/count"
-        },
-        {
-          scr: require("../assets/slideShow/pic3.jpg"),
-          title: "xxx3",
-          href: "http://xxx.xxx.com"
-        },
-        {
-          scr: require("../assets/slideShow/pic4.jpg"),
-          title: "xxx4",
-          href: "detail/forecast"
-        }
-      ]
-    };
-  },
-  components: {
-    SlideShow
+      }
+    }
   }
-};
+}
 </script>
 <style lang="less" scoped>
 .index-wrap {
