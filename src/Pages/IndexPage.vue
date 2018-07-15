@@ -32,7 +32,9 @@
               <h2>{{item.title}}</h2>
               <p>{{item.description}}</p>
               <div class="index-board-button">
+                
                 立即购买
+                
               </div>
             </div>
           </div>
