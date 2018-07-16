@@ -1,13 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Layout from '@/components/Layout'
-
+import IndexPage from '../Pages/IndexPage'
 Vue.use(Router)
 
 export default new Router({
-  routes: [{
-    path: '/',
-    name: 'Layout',
-    component: Layout
-  }]
+    mode: 'history',
+    routes: [{
+        path: '/',
+        name: 'IndexPage',
+        component: IndexPage
+    }]
 })
