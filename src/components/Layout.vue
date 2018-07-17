@@ -3,7 +3,9 @@
   <div class="app-header">
     <div class="wrap">
       <div class="logo">
-        <img src="../assets/logo.png" alt="">
+        <router-link :to="{path:'/'}">
+          <img src="../assets/logo.png">
+        </router-link>       
       </div>
       <div class="nav">
         <ul class="nav-list">
@@ -213,7 +215,7 @@ body {
     .logo {
       width: 50px;
       img {
-        width: inherit;
+        width: 50px;
         vertical-align: middle;
       }
     }
@@ -291,5 +293,9 @@ body {
     color: red;
     padding-left: 15px;
   }
+}
+.g-form-error {
+  color: red;
+  padding-left: 15px;
 }
 </style>

@@ -2,10 +2,12 @@
     <!-- 模态框 -->
     <div class="dialog-wrap">
         <div class="dialog-cover" v-if="isShow" @click="closeMyself"></div>
-        <div class="dialog-content" v-if="isShow">
-            <p class="dialog-close" @click="closeMyself">X</p>
-            <slot>empty</slot>
-        </div>
+        <transition name="drop">
+           <div class="dialog-content" v-if="isShow">
+              <p class="dialog-close" @click="closeMyself">X</p>
+              <slot>empty</slot>
+            </div>
+        </transition>      
     </div>
 </template>
 <script>
@@ -27,6 +29,24 @@ export default {
 };
 </script>
 <style lang="less" scoped>
+.drop-enter-active {
+  transition: all 0.5s ease;
+}
+.drop-leave-active {
+  transition: all 0.3s ease;
+}
+.drop-enter {
+  transform: translateY(-500px);
+}
+.drop-leave-active {
+  transform: translateY(-500px);
+}
+
+.dialog-wrap {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
 .dialog-wrap {
   position: fixed;
   width: 100%;

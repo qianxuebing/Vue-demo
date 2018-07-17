@@ -32,7 +32,8 @@
               <h2>{{item.title}}</h2>
               <p>{{item.description}}</p>
               <div class="index-board-button">
-                <a href="javascript:;" class="button"> 立即购买</a>               
+                <!-- <a href="javascript:;" class="button"> 立即购买</a>                -->
+                <router-link class="button" :to="{path:'detail/'+item.toKey}">立即购买</router-link>
               </div>
             </div>
           </div>
@@ -64,7 +65,7 @@ export default {
         {
           src: require("../assets/slideShow/pic3.jpg"),
           title: "xxx3",
-          href: "http://xxx.xxx.com"
+          href: "detail/publish"
         },
         {
           src: require("../assets/slideShow/pic4.jpg"),

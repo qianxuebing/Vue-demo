@@ -1,8 +1,7 @@
 <template>
-<div>
-    publish
-</div>
-
+    <div class="nultplychooser-component">
+        产品版本
+    </div>
 </template>
 <script>
 export default {};

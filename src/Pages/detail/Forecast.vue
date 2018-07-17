@@ -1,4 +1,7 @@
 <template>
+<div>
+    foracast
+</div>
     
 </template>
 <script>

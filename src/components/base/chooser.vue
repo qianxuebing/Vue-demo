@@ -1,8 +1,7 @@
 <template>
-<div>
-    publish
-</div>
-
+    <div class="chooser-component">
+        有效时间
+    </div>
 </template>
 <script>
 export default {};
