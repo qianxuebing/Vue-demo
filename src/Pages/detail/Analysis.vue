@@ -48,7 +48,7 @@
              <div class="sales-board-line">
                 <div class="sales-board-line-left">&nbsp;</div>
                 <div class="sales-board-line-right">
-                    <div class="button">
+                    <div class="button" @click="ShowPayDialog">
                         立即购买
                     </div>
                 </div>
@@ -73,6 +73,29 @@
                 <li>用户所在地理区域分布状况等</li>
             </ul>
         </div>
+        <my-dialog :is-show="isShowPayDialog" @on-close="hidePayDialog">
+            <table class="buy-dialog-table">
+                <tr>
+                    <th>购买数量</th>
+                    <th>产品类型</th>
+                    <th>有效时间</th>
+                    <th>产品版本</th>
+                    <th>总价</th>
+                </tr>
+                <tr>
+                    <td>{{buyNum}}</td>
+                    <td>{{buyType.label}}</td>
+                    <td>{{period.label}}</td>
+                    <td>
+                        <span v-for="item in versions">{{item.label}}</span>
+                    </td>
+                    <td>{{price}}</td>
+                </tr>
+            </table>
+            <h3 class="buy-dialog-title">请选择银行</h3>
+            <bank-chooser></bank-chooser>
+            <div class="button buy-dialog-btn">确认购买</div>
+        </my-dialog>
     </div>
 </template>
 <script>
@@ -80,12 +103,16 @@ import VCounter from "../../components/base/counter";
 import VSelection from "../../components/base/select";
 import VChooser from "../../components/base/chooser";
 import VMultiplyChooser from "../../components/base/multiplyChooser";
+import BankChooser from "../../components/bankChooser";
+import MyDialog from "../../components/dialog";
 export default {
   components: {
     VCounter,
     VSelection,
     VChooser,
-    VMultiplyChooser
+    VMultiplyChooser,
+    BankChooser,
+    MyDialog
   },
   data() {
     return {
@@ -108,17 +135,50 @@ export default {
         { label: "入门版", value: 0 },
         { label: "中级版", value: 1 },
         { label: "高级版", value: 2 }
-      ]
+      ],
+      isShowPayDialog: false,
+      bankId: null,
+      orderId: null,
+      isShowCheckOrder: false,
+      isShowErrDialog: false
     };
   },
   methods: {
     onParamChange(attr, val) {
       this[attr] == val;
+    },
+    ShowPayDialog() {
+      this.isShowPayDialog = true;
+    },
+    hidePayDialog() {
+      this.isShowPayDialog = false;
     }
   }
 };
 </script>
 <style lang="less" scoped>
+.buy-dialog-title {
+  font-size: 16px;
+  font-weight: bold;
+}
+.buy-dialog-btn {
+  margin-top: 20px;
+}
+.buy-dialog-table {
+  width: 100%;
+  margin-bottom: 20px;
+  td,
+  th {
+    border: 1px solid #e3e3e3;
+    text-align: center;
+    padding: 5px 0;
+  }
+  th {
+    background: #4fc08d;
+    color: #fff;
+    border: 1px solid #4fc08d;
+  }
+}
 </style>
 
 

@@ -43,11 +43,12 @@ export default {
 };
 </script>
 <style lang="less" scoped>
+@border: 1px solid #e3e3e3;
 .selection-component {
   position: relative;
   display: inline-block;
   .selection-show {
-    border: 1px solid #e3e3e3;
+    border: @border;
     padding: 0 20px 0 10px;
     display: inline-block;
     position: relative;
@@ -76,13 +77,13 @@ export default {
     top: 25px;
     width: 100%;
     background: #fff;
-    border-top: 1px solid #e3e3e3;
-    border-bottom: 1px solid #e3e3e3;
+    border-top: @border;
+    border-bottom: @border;
     z-index: 5;
     li {
       padding: 5px 15px 5px 10px;
-      border-left: 1px solid #e3e3e3;
-      border-right: 1px solid #e3e3e3;
+      border-left: @border;
+      border-right: @border;
       cursor: pointer;
       background: #fff;
       white-space: nowrap;
