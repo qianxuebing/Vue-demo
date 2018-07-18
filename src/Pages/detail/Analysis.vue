@@ -96,6 +96,9 @@
             <bank-chooser></bank-chooser>
             <div class="button buy-dialog-btn">确认购买</div>
         </my-dialog>
+        <my-dialog :is-show="isShowErrDialog" @on-close="hideErrDialog">
+            支付失败
+        </my-dialog>
     </div>
 </template>
 <script>
@@ -152,6 +155,9 @@ export default {
     },
     hidePayDialog() {
       this.isShowPayDialog = false;
+    },
+    hideErrDialog() {
+      this.isShowErrDialog = false;
     }
   }
 };
