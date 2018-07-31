@@ -93,8 +93,8 @@
                 </tr>
             </table>
             <h3 class="buy-dialog-title">请选择银行</h3>
-            <bank-chooser></bank-chooser>
-            <div class="button buy-dialog-btn">确认购买</div>
+            <bank-chooser @on-change="onChangeBanks"></bank-chooser>
+            <div class="button buy-dialog-btn" >确认购买</div>
         </my-dialog>
         <my-dialog :is-show="isShowErrDialog" @on-close="hideErrDialog">
             支付失败
@@ -158,6 +158,9 @@ export default {
     },
     hideErrDialog() {
       this.isShowErrDialog = false;
+    },
+    onChangeBanks(bankObj){
+      this.bankId = bankObj.id
     }
   }
 };
