@@ -26,7 +26,7 @@
                     有效时间:
                 </div>
                 <div class="sales-board-line-right">
-                    <v-chooser></v-chooser>
+                   <v-chooser :selections="periodList" @on-change="onParamChange('period',$event)"></v-chooser>
                 </div>
             </div>
              <div class="sales-board-line">
@@ -34,7 +34,9 @@
                     产品版本:
                 </div>
                 <div class="sales-board-line-right">                   
-                    <v-multiply-chooser></v-multiply-chooser>
+                    <v-multiply-chooser 
+                    :selections="versionList"
+                    @on-change="onParamChange('versions',$event)"></v-multiply-chooser>
                 </div>
             </div>
              <div class="sales-board-line">
@@ -42,7 +44,7 @@
                     总价:
                 </div>
                 <div class="sales-board-line-right">
-                    
+                    {{price}}
                 </div>
             </div>
              <div class="sales-board-line">
@@ -94,7 +96,7 @@
             </table>
             <h3 class="buy-dialog-title">请选择银行</h3>
             <bank-chooser @on-change="onChangeBanks"></bank-chooser>
-            <div class="button buy-dialog-btn" >确认购买</div>
+            <div class="button buy-dialog-btn" @click="confirmBuy">确认购买</div>
         </my-dialog>
         <my-dialog :is-show="isShowErrDialog" @on-close="hideErrDialog">
             支付失败
@@ -102,17 +104,18 @@
     </div>
 </template>
 <script>
-import VCounter from "../../components/base/counter";
-import VSelection from "../../components/base/select";
-import VChooser from "../../components/base/chooser";
-import VMultiplyChooser from "../../components/base/multiplyChooser";
-import BankChooser from "../../components/bankChooser";
-import MyDialog from "../../components/dialog";
+import VCounter from "../../components/base/counter"
+import VChooser from "../../components/base/chooser"
+import VSelection from "../../components/base/select"
+import VMultiplyChooser from "../../components/base/multiplyChooser"
+import BankChooser from "../../components/bankChooser"
+import MyDialog from "../../components/dialog"
+import _ from 'lodash'
 export default {
   components: {
     VCounter,
-    VSelection,
     VChooser,
+    VSelection,   
     VMultiplyChooser,
     BankChooser,
     MyDialog
@@ -161,7 +164,28 @@ export default {
     },
     onChangeBanks(bankObj){
       this.bankId = bankObj.id
+    },
+    confirmBuy(){
+      let buyVersionsArray = _.map(this.versions,(item)=>{
+        return item.value
+      })
+      let reParams = {
+        buyNum:this.buyNum,
+        buyType:this.buyType.value,
+        period:this.period.value,
+        version: buyVersionsArray.join(','), 
+        bankId:this.bankId
+
+      }
     }
+
+
+  },
+  mounted () {
+    this.buyNum = 1
+    this.buyType = this.buyTypes[0]
+    this.versions = [this.versionList[0]]
+    this.period = this.periodList[0]
   }
 };
 </script>

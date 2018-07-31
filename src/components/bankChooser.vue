@@ -70,76 +70,82 @@ export default {
 .chooser-component {
   position: relative;
   display: inline-block;
-  .chooser-list li {
-    display: inline-block;
-    width: 117px;
-    height: 32px;
-    background: url(../assets/banks/banks.png) no-repeat;
-    margin: 5px;
-    border: 1px solid #e3e3e3;
-    cursor: pointer;
-  }
+  .chooser-list{
+    li {
+      display: inline-block;
+      width: 117px;
+      height: 32px;
+      background: url(../assets/banks/banks.png) no-repeat;
+      margin: 5px;
+      border: 1px solid #e3e3e3;
+      cursor: pointer;
+    }
+    li.active{
+      border: 1px solid #4fc08d;
+    }
+  } 
+
 }
 .zhaoshang {
-  background-position: -2160px 0;
+    background-position: -2160px 0!important;
 }
 .jianshe {
-  background-position: -720px 0;
+    background-position: -720px 0!important;
 }
 .pufa {
-  background-position: -1800px 0;
+    background-position: -1800px 0!important;
 }
 .jiaotong {
-  background-position: -3120px 0;
+    background-position: -3120px 0!important;
 }
 .minsheng {
-  background-position: -2760px 0;
+    background-position: -2760px 0!important;
 }
 .pingan {
-  background-position: -2400px 0;
+    background-position: -2400px 0!important;
 }
 .beijing {
-  background-position: -960px 0;
+    background-position: -960px 0!important;
 }
 .xingye {
-  background-position: 0 0;
+    background-position: 0 0!important;
 }
 .shanghai {
-  background-position: -1560px 0;
+    background-position: -1560px 0!important;
 }
 .guangfa {
-  background-position: -840px 0;
+    background-position: -840px 0!important;
 }
 .gongshang {
-  background-position: -2640px 0;
+    background-position: -2640px 0!important;
 }
 .nongye {
-  background-position: -1680px 0;
+    background-position: -1680px 0!important;
 }
 .guangda {
-  background-position: -2280px 0;
+    background-position: -2280px 0!important;
 }
 .zhongguo {
-  background-position: -2520px 0;
+    background-position: -2520px 0!important;
 }
 .zhongxin {
-  background-position: -480px 0;
+    background-position: -480px 0!important;
 }
 .chuxu {
-  background-position: -120px 0;
+    background-position: -120px 0!important;
 }
 .bnongshang {
-  background-position: -1440px 0;
+    background-position: -1440px 0!important;
 }
 .huaxia {
-  background-position: -2040px 0;
+    background-position: -2040px 0!important;
 }
 .snongshang {
-  background-position: -2880px 0;
+    background-position: -2880px 0!important;
 }
 
 .baifubao {
-  background-position: -1320px 0;
+    background-position: -1320px 0!important;
 }
 </style>
 
